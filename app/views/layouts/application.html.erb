@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <h1>Bem vindo ao Aluga Inverno</h1>
+    <% if(flash[:notice])%>
+        <p><%= flash[:notice]%></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
