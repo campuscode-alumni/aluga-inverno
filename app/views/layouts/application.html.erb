@@ -10,6 +10,9 @@
 
   <body>
     <h1>Bem vindo ao Aluga Inverno</h1>
+    <div>
+      <%= link_to 'Cadastrar uma Propiedade', new_property_path%>
+    <div>
     <% if(flash[:notice])%>
         <p><%= flash[:notice]%></p>
     <% end %>

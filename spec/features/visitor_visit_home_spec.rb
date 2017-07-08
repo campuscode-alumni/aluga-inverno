@@ -45,7 +45,7 @@ feature 'Visitor visit home and see home' do
     expect(page).to have_css('li', text: 'Minimo dias de aluguel: 2')
     expect(page).to have_css('li', text: 'Maximo dias de aluguel: 8')
     expect(page).to have_css('li', text: 'Finalidade: Festa')
-    expect(page).to have_css('li', text: 'localizacao: SP')
+    expect(page).to have_css('li', text: 'Localizacao: SP')
     expect(page).to have_css('li', text: 'Descrição: Chale para festa')
     expect(page).to have_css('li', text: 'Regras: Sem cachorros')
     expect(page).to have_css('li', text: 'Valor: R$ 230.0')
