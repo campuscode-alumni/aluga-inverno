@@ -17,10 +17,15 @@ class PropertiesController < ApplicationController
       render :new
     end
   end
+  def filter
+    @properties = Property.where(property_location: params[:filter])
+  end
 
+private
   def property_params
     params.require(:property).permit(:property_type, :maximum_guests,
     :minimum_rent, :maximum_rent, :rent_purpose, :property_location,
     :description, :rules, :daily_rate, :picture, :owner, :email, :phone)
   end
+
 end
