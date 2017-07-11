@@ -1,0 +1,16 @@
+<h1>Detalhes da Proposta</h1>
+<ul>
+  <li>Nome: <%=@proposal.name%></li>
+  <li>Email: <%=@proposal.email%></li>
+  <li>Cpf: <%=@proposal.cpf%></li>
+  <li>Telefone: <%=@proposal.phone%></li>
+
+  <li>Data inicial: <%=@proposal.start_date.strftime("%m/%d/%Y")%></li>
+  <li>Data final: <%=@proposal.end_date.strftime("%m/%d/%Y") %></li>
+  <li>Total: <%=@proposal.total_amount%></li>
+  <li>Proposito: <%=@proposal.rent_purpose %></li>
+  <li>Infs Extras: <%=@proposal.extra_info %></li>
+</ul>
+
+  <li> <%= link_to 'Voltar', root_path %></li>
+</ul>

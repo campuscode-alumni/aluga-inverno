@@ -10,6 +10,6 @@ FactoryGirl.define do
     cpf "MyString"
     phone "MyString"
     extra_info "MyText"
-    property nil
+    property
   end
 end

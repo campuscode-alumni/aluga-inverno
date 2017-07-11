@@ -1,0 +1,28 @@
+<%= form_for [@prop, @proposal] do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name %>
+  <%= f.label :email, 'email' %>
+  <%= f.text_field :email %>
+  <%= f.label :cpf, 'cpf' %>
+  <%= f.text_field :cpf %>
+
+  <%= f.label :phone, 'telefone' %>
+  <%= f.text_field :phone %>
+
+  <%= f.label :start_date, 'data inicial' %>
+  <%= f.text_field :start_date %>
+
+  <%= f.label :end_date, 'data final' %>
+  <%= f.text_field :end_date %>
+
+  <%= f.label :total_amount, 'total' %>
+  <%= f.text_field :total_amount %>
+
+  <%= f.label :rent_purpose, 'proposito' %>
+  <%= f.text_field :rent_purpose %>
+
+  <%= f.label :extra_info, 'infs extra' %>
+  <%= f.text_field :extra_info %>
+
+  <%= f.submit 'Enviar' %>
+<% end %>

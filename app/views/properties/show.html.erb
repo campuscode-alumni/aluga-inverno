@@ -16,4 +16,5 @@
   <li>Nome: <%=@property.owner%></li>
   <li>Email: <%=@property.email%></li>
   <li>Telefone: <%=@property.phone%></li>
+  <li> <%= link_to 'Efetuar Oferta', new_property_proposal_path(property_id: @property ) %> </li>
 </ul>
