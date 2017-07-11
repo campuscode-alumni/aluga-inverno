@@ -2,6 +2,9 @@ require 'rails_helper'
 
 feature 'Visitor create property' do
   scenario 'successefully' do
+    owner =   Owner.create(email: 'campus@campus.com.br', password: '1234567', name: 'Joao H', phone: '91111-2222')
+    login_as(owner, scope: :owner)
+
     visit root_path
     click_on 'Cadastrar uma Propiedade'
 
@@ -15,9 +18,6 @@ feature 'Visitor create property' do
     fill_in 'Regras', with: 'Não fumar no apartamento'
     fill_in 'Valor', with: 40.0
     fill_in 'Foto', with: 'sem fotos'
-    fill_in 'Nome', with: 'Joao H'
-    fill_in 'Email', with: 'jh@jh.com.br'
-    fill_in 'Telefone', with: '91111-2222'
 
     click_on 'Enviar'
 
@@ -34,13 +34,16 @@ feature 'Visitor create property' do
     expect(page).to have_css('li', text: 'Foto: sem fotos')
     expect(page).to have_css('h2', text: 'Contatos')
     expect(page).to have_css('li', text: 'Nome: Joao H')
-    expect(page).to have_css('li', text: 'Email: jh@jh.com.br')
+    expect(page).to have_css('li', text: 'Email: campus@campus.com.br')
     expect(page).to have_css('li', text: 'Telefone: 91111-2222')
 
   end
 
   scenario 'Must fill all fields' do
+    owner =   Owner.create(email: 'campus@campus.com.br', password: '1234567')
+
     visit root_path
+    login_as(owner, :scope => :owner)
     click_on 'Cadastrar uma Propiedade'
 
     fill_in 'Tipo', with: ''
@@ -63,4 +66,12 @@ feature 'Visitor create property' do
 
   end
 
+  scenario 'User not login' do
+
+    visit root_path
+    click_on 'Cadastrar uma Propiedade'
+
+    expect(current_path).to eq new_owner_session_path
+
+  end
 end

@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-
+  before_action :authenticate_owner!, only:[:new]
   def show
     @property = Property.find(params[:id])
   end
@@ -9,8 +9,9 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    @property = Property.create(property_params)
-    if @property.valid?
+    @property = Property.new(property_params)
+    @property.owner = current_owner
+    if @property.save
       redirect_to @property
     else
       flash[:notice] = "Todos os campos devem ser preenchidos"
@@ -25,7 +26,7 @@ private
   def property_params
     params.require(:property).permit(:property_type, :maximum_guests,
     :minimum_rent, :maximum_rent, :rent_purpose, :property_location,
-    :description, :rules, :daily_rate, :picture, :owner, :email, :phone)
+    :description, :rules, :daily_rate, :picture)
   end
 
 end

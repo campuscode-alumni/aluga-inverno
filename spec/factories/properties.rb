@@ -9,9 +9,7 @@ FactoryGirl.define do
     property_location "Sao Paulo"
     description "Propiedade para aluguel na praia"
     picture "Sem foto "
-    owner "Owner"
-    email "Email"
-    phone "42242244"
     rules "Rules"
+    owner
   end
 end

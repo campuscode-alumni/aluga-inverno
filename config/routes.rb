@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-   root to: "home#index"
+  devise_for :owners
+  root to: "home#index"
 
-   resources :properties, only: [:show, :new, :create] do
-     get 'filter', on: :collection
-   end
+  resources :properties, only: [:show, :new, :create] do
+    get 'filter', on: :collection
+  end
 end

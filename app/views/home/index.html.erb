@@ -1,9 +1,3 @@
-<%= form_tag(filter_properties_path, method: "get") do %>
-  <%= label_tag(:filter, "filter_label") %>
-  <%= text_field_tag(:filter) %>
-  <%= submit_tag("Buscar") %>
-<% end %>
-
 
 <% @properties.each do |property| %>
   <ul>
