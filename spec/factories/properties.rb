@@ -8,5 +8,8 @@ FactoryGirl.define do
     rent_purpose "Festas"
     property_location "Sao Paulo"
     description "Propiedade para aluguel na praia"
+    picture "Sem foto "
+    rules "Rules"
+    owner
   end
 end
