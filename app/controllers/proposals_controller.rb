@@ -29,8 +29,13 @@ class ProposalsController < ApplicationController
     end
 
     def calculate
-      @proposal.calculate_days * 500
-
+      #1o: busca um price com data inicio <= data inicio da proposta e fim >= fim da proposta
+      temporada =Price.where('start_date <= ? and end_date >= ?', @proposal.start_date, @proposal.start_date).last
+      if temporada.nil?
+        @proposal.calculate_days * @prop.daily_rate
+      else
+        @proposal.calculate_days * temporada.total_amount
+      end
     end
 
 end
