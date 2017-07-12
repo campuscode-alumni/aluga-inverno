@@ -7,6 +7,7 @@ class ProposalsController < ApplicationController
   def create
     @prop = Property.find(params[:property_id])
     @proposal = @prop.proposals.new(proposal_params)
+    @proposal.total_amount = calculate
     if @proposal.save
       redirect_to @proposal
     else
@@ -24,6 +25,11 @@ class ProposalsController < ApplicationController
     def proposal_params
       params.require(:proposal).permit(:name, :email, :cpf, :phone,
         :start_date, :end_date, :total_amount, :rent_purpose, :extra_info)
+
+    end
+
+    def calculate
+      @proposal.calculate_days * 500
 
     end
 

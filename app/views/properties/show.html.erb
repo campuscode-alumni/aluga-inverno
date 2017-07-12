@@ -11,11 +11,21 @@
   <li>Valor: R$ <%=@property.daily_rate%></li>
   <li>Foto: <%=@property.picture%></li>
 </ul>
+<h2>Precos por Temporada</h2>
+<% @property.prices.each do |price|%>
+<ul>
+  <li>Temporada: <%= price.name%></li>
+  <li>Data inicio: <%= price.start_date.strftime("%d/%m/%Y")%></li>
+  <li>Data fim: <%= price.end_date.strftime("%d/%m/%Y")%></li>
+  <li>Valor da diaria: <%= format("%.2f", price.total_amount) %></li>
+</ul>
+<% end %>
+
 <h2>Contatos</h2>
 <ul>
   <li>Nome: <%=@property.owner.name%></li>
   <li>Email: <%=@property.owner.email%></li>
   <li>Telefone: <%=@property.owner.phone%></li>
-  <li> <%= link_to 'Efetuar Oferta', new_property_proposal_path(property_id: @property ) %> </li>
-
+  <li><%= link_to 'Efetuar Oferta', new_property_proposal_path(@property) %></li>
+  <li><%= link_to 'Configurar Preco', new_property_price_path(@property)%></li>
 </ul>

@@ -7,10 +7,8 @@ Rails.application.routes.draw do
      get 'filter', on: :collection
 
      resources :proposals, only: [:new, :index, :create]
-
-
+     resources :prices, only: [:new, :create]
    end
-
    resources :proposals, only: [:show]
 
 end
