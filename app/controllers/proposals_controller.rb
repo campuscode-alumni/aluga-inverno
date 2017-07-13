@@ -1,5 +1,7 @@
 class ProposalsController < ApplicationController
+
   before_action :authenticate_owner!, only:[:index]
+  before_action :authenticate_user!, only: [:new, :create]
 
 
   def index
@@ -20,11 +22,14 @@ class ProposalsController < ApplicationController
   def new
     @prop = Property.find(params[:property_id])
     @proposal = Proposal.new(property: @prop)
+    @proposal.user = current_user
   end
 
   def create
+
     @prop = Property.find(params[:property_id])
     @proposal = @prop.proposals.new(proposal_params)
+    @proposal.user = current_user
     @proposal.total_amount = calculate
     if @proposal.save
       redirect_to @proposal

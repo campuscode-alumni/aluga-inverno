@@ -2,23 +2,7 @@
   <p><%= msg %></p>
 <% end %>
 <%= form_for [@prop, @proposal] do |f| %>
-
-<div class="form-group">
-  <%= f.label :name, 'Nome' %>
-  <%= f.text_field :name, {class: "form-control"} %>
-</div>
-<div class="form-group">
-  <%= f.label :email, 'email' %>
-  <%= f.text_field :email, {class: "form-control"}  %>
-</div>
-<div class="form-group">
-  <%= f.label :cpf, 'cpf' %>
-  <%= f.text_field :cpf, {class: "form-control"}  %>
-</div>
-<div class="form-group">
-  <%= f.label :phone, 'telefone' %>
-  <%= f.text_field :phone, {class: "form-control"}  %>
-</div>
+  
 <div class="form-group">
   <%= f.label :start_date, 'data inicial' %>
   <%= f.text_field :start_date, {class: "form-control"}  %>

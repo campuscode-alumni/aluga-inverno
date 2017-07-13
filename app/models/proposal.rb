@@ -1,5 +1,6 @@
 class Proposal < ApplicationRecord
   belongs_to :property
+  belongs_to :user
 
   validate :validate_disponibility
   validates :start_date, presence: true

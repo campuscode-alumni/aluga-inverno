@@ -5,10 +5,6 @@ FactoryGirl.define do
     total_amount "9.99"
     total_guests 1
     rent_purpose "MyString"
-    name "Lucas"
-    email "lucasfe@gmail.com"
-    cpf "MyString"
-    phone "1234-1234"
     extra_info "MyText"
     property
   end
