@@ -1,8 +1,18 @@
 
+  <h2>Lista de Propriedade:</h2>
+
 <% @properties.each do |property| %>
-  <ul>
-    <li><%= link_to property.property_type, property %></li>
-    <li><%=property.property_location%></li>
-    <li><%=property.rent_purpose%></li>
-  </ul>
+<div class="col-md-3 csol-sm-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item"><%= link_to property.property_type, property %></li>
+          <li class="list-group-item"><%=property.property_location%></li>
+          <li class="list-group-item" ><%=property.rent_purpose%></li>
+        </ul>
+
+    </div>
+  </div>
+</div>
 <% end %>

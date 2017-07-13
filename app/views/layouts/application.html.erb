@@ -33,7 +33,7 @@
             <%= form_tag(filter_properties_path, {method: "get", class: "navbar-form navbar-right" }) do %>
               <%= label_tag(:filter, "Busca") %>
               <%= text_field_tag(:filter) %>
-              <%= submit_tag("Buscar") %>
+              <%= submit_tag("Buscar" ,{class: "btn btn-primary"}) %>
             <% end %>
 
 
@@ -43,6 +43,8 @@
     <p><%=flash[:error]%> </p>
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <div class="container">
+          <%= yield %>
+      </div>
   </body>
 </html>
