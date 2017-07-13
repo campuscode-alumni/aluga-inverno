@@ -29,7 +29,6 @@
           <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Cadastrar uma Propiedade', new_property_path%></li>
-            <li><%= link_to 'Ver proposta', my_proposals_path%></li>
           </ul>
             <%= form_tag(filter_properties_path, {method: "get", class: "navbar-form navbar-right" }) do %>
               <%= label_tag(:filter, "Busca") %>
@@ -41,9 +40,7 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    <% if(flash[:notice])%>
-        <p><%= flash[:notice]%></p>
-    <% end %>
+    <p><%=flash[:error]%> </p>
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
     <%= yield %>

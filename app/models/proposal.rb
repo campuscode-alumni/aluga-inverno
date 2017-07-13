@@ -1,3 +1,12 @@
 class Proposal < ApplicationRecord
   belongs_to :property
+  validate :validate_disponibility
+  validates :start_date, presence: true
+
+  def validate_disponibility
+    proposals =  Proposal.where(property: property, start_date: start_date, end_date: end_date, accept: 1)
+    if proposals.any?
+      errors.add(:base, 'Este periodo esta indisponivel')
+    end
+  end
 end

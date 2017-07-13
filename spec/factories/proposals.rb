@@ -1,14 +1,14 @@
 FactoryGirl.define do
   factory :proposal do
-    start_date "2017-07-07"
-    end_date "2017-07-07"
+    start_date "2017-08-06"
+    end_date "2017-08-07"
     total_amount "9.99"
     total_guests 1
     rent_purpose "MyString"
-    name "MyString"
-    email "MyString"
+    name "Lucas"
+    email "lucasfe@gmail.com"
     cpf "MyString"
-    phone "MyString"
+    phone "1234-1234"
     extra_info "MyText"
     property
   end
