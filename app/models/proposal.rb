@@ -1,5 +1,6 @@
 class Proposal < ApplicationRecord
   belongs_to :property
+
   validate :validate_disponibility
   validates :start_date, presence: true
 
@@ -9,4 +10,9 @@ class Proposal < ApplicationRecord
       errors.add(:base, 'Este periodo esta indisponivel')
     end
   end
+
+  def calculate_days
+    (end_date - start_date)+1
+  end
+
 end

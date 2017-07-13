@@ -2,6 +2,7 @@
   <p><%= msg %></p>
 <% end %>
 <%= form_for [@prop, @proposal] do |f| %>
+
 <div class="form-group">
   <%= f.label :name, 'Nome' %>
   <%= f.text_field :name, {class: "form-control"} %>

@@ -25,6 +25,7 @@ class ProposalsController < ApplicationController
   def create
     @prop = Property.find(params[:property_id])
     @proposal = @prop.proposals.new(proposal_params)
+    @proposal.total_amount = calculate
     if @proposal.save
       redirect_to @proposal
     else
@@ -42,5 +43,15 @@ class ProposalsController < ApplicationController
     def proposal_params
       params.require(:proposal).permit(:name, :email, :cpf, :phone,
         :start_date, :end_date, :total_amount, :rent_purpose, :extra_info)
+    end
+
+    def calculate
+      #1o: busca um price com data inicio <= data inicio da proposta e fim >= fim da proposta
+      temporada =Price.where('start_date <= ? and end_date >= ?', @proposal.start_date, @proposal.start_date).last
+      if temporada.nil?
+        @proposal.calculate_days * @prop.daily_rate
+      else
+        @proposal.calculate_days * temporada.total_amount
+      end
     end
 end

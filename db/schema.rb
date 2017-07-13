@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20170713000452) do
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.float "total_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_prices_on_property_id"
+  end
+
   create_table "properties", force: :cascade do |t|
     t.integer "maximum_guests"
     t.integer "minimum_rent"

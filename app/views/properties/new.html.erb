@@ -1,29 +1,55 @@
 <%= form_for(@property) do |f| %>
-  <%= f.label :property_type, 'Tipo' %>
-  <%= f.text_field :property_type %>
-  <%= f.label :maximum_guests, 'Capacidade maxima' %>
-  <%= f.text_field :maximum_guests %>
-  <%= f.label :minimum_rent, 'Minimo dias de aluguel' %>
-  <%= f.text_field :minimum_rent %>
-  <%= f.label :maximum_rent, 'Maximo dias de aluguel' %>
-  <%= f.text_field :maximum_rent %>
-  <%= f.label :rent_purpose, 'Finalidade' %>
-  <%= f.text_field :rent_purpose %>
-  <%= f.label :property_location, 'Localizacao' %>
-  <%= f.text_field :property_location %>
-  <%= f.label :description, 'Descrição' %>
-  <%= f.text_field :description %>
-  <%= f.label :rules, 'Regras' %>
-  <%= f.text_field :rules %>
-  <%= f.label :daily_rate, 'Valor:' %>
-  <%= f.text_field :daily_rate %>
-  <%= f.label :picture, 'Foto' %>
-  <%= f.text_field :picture %>
-  <%= f.label :owner, 'Nome' %>
-  <%= f.text_field :owner %>
-  <%= f.label :email, 'Email' %>
-  <%= f.text_field :email %>
-  <%= f.label :phone, 'Telefone' %>
-  <%= f.text_field :phone %>
+  <div class="">
+    <%= f.label :property_type, 'Tipo' %>
+    <%= f.text_field :property_type %>
+  </div>
+  <div class="">
+    <%= f.label :maximum_guests, 'Capacidade maxima' %>
+    <%= f.text_field :maximum_guests %>
+  </div>
+  <div class="">
+    <%= f.label :minimum_rent, 'Minimo dias de aluguel' %>
+    <%= f.text_field :minimum_rent %>
+  </div>
+  <div class="">
+    <%= f.label :maximum_rent, 'Maximo dias de aluguel' %>
+    <%= f.text_field :maximum_rent %>
+  </div>
+  <div class="">
+    <%= f.label :rent_purpose, 'Finalidade' %>
+    <%= f.text_field :rent_purpose %>
+  </div>
+  <div class="">
+    <%= f.label :property_location, 'Localizacao' %>
+    <%= f.text_field :property_location %>
+  </div>
+  <div class="">
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="">
+    <%= f.label :rules, 'Regras' %>
+    <%= f.text_field :rules %>
+  </div>
+  <div class="">
+    <%= f.label :daily_rate, 'Valor:' %>
+    <%= f.text_field :daily_rate %>
+  </div>
+  <div class="">
+    <%= f.label :picture, 'Foto' %>
+    <%= f.text_field :picture %>
+  </div>
+  <div class="">
+    <%= f.label :owner, 'Nome' %>
+    <%= f.text_field :owner %>
+  </div>
+  <div class="">
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="">
+    <%= f.label :phone, 'Telefone' %>
+    <%= f.text_field :phone %>
+  </div>
   <%= f.submit 'Enviar'%>
 <% end %>

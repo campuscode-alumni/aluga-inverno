@@ -1,0 +1,19 @@
+<%= form_for([@property, @price]) do |f| %>
+  <div class="">
+    <%= f.label :name, 'Temporada' %>
+    <%= f.text_field :name  %></br>
+  </div>
+  <div class="">
+    <%= f.label :start_date, 'Data inicio' %>
+    <%= f.date_field :start_date  %>
+  </div>
+  <div class="">
+    <%= f.label :end_date, 'Data fim' %>
+    <%= f.date_field :end_date  %>
+  </div>
+  <div class="">
+    <%= f.label :total_amount, 'Valor da diaria' %>
+    <%= f.text_field :total_amount  %>
+  </div>
+  <%= f.submit 'Enviar'%>
+<% end %>
