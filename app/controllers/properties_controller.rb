@@ -19,7 +19,7 @@ class PropertiesController < ApplicationController
     end
   end
   def filter
-    @properties = Property.where(property_location: params[:filter])
+    @properties = Property.where("property_location like  ?  ", "%#{params[:filter]}%")
   end
 
 private

@@ -16,7 +16,6 @@ feature 'Visitante realiza proposta' do
 
     fill_in 'data inicial', with: '2017-07-01'
     fill_in 'data final', with: '2017-07-05'
-    fill_in 'total', with: '1000'
     fill_in 'proposito', with: 'Ferias'
     fill_in 'infs extra', with: 'None'
 
@@ -46,7 +45,6 @@ feature 'Visitante realiza proposta' do
 
     fill_in 'data inicial', with: '2017-08-06'
     fill_in 'data final', with: '2017-08-07'
-    fill_in 'total', with: '1000'
     fill_in 'proposito', with: 'Ferias'
     fill_in 'infs extra', with: 'None'
 

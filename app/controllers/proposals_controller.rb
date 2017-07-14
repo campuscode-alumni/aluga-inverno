@@ -5,10 +5,11 @@ class ProposalsController < ApplicationController
 
 
   def index
-    @proposals = Proposal.where(property_id: params[:property_id])
-    if @proposals.last.property.owner != current_owner
+    @property = Property.find(params[:property_id])
+    if @property.owner != current_owner
       redirect_to root_path
     end
+    @proposals = @property.proposals
   end
 
  def accept
@@ -59,4 +60,6 @@ class ProposalsController < ApplicationController
         @proposal.calculate_days * temporada.total_amount
       end
     end
+
+
 end

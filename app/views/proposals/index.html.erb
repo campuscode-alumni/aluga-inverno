@@ -1,22 +1,26 @@
 <h1>Minhas Propostas</h1>
-<% @proposals.each do |proposal| %>
-<div id="proposal_<%=proposal.id%>">
-  <p>
-      Propiedade:
-      <%= proposal.property.property_type%>
-    - <%= proposal.property.rent_purpose%>
-    - <%= proposal.property.property_location%>
-     <%if proposal.accept == 1 %>
-        (Proposta Aceita)
-      <%else%>
-        (<%=link_to 'Aceitar Proposta', accept_property_proposal_path(id: proposal.id)%>)
-      <%end%>
 
-  </p>
-  <p>Nome: <%= proposal.user.name%></p>
-  <p>Data inicial: <%= proposal.start_date.strftime("%d/%m/%Y")%></p>
-  <p>Data final: <%= proposal.end_date.strftime("%d/%m/%Y")%></p>
-  <p>Telefone: <%= proposal.user.phone%></p>
-  <p>Email: <%= proposal.user.email%></p>
-</div>
+<% if @proposals.empty? %>
+  Sem Propostas para essa propriedade!
 <% end %>
+  <% @proposals.each do |proposal| %>
+  <div id="proposal_<%=proposal.id%>">
+    <p>
+        Propiedade:
+        <%= proposal.property.property_type%>
+      - <%= proposal.property.rent_purpose%>
+      - <%= proposal.property.property_location%>
+       <%if proposal.accept == 1 %>
+          (Proposta Aceita)
+        <%else%>
+          (<%=link_to 'Aceitar Proposta', accept_property_proposal_path(id: proposal.id)%>)
+        <%end%>
+
+    </p>
+    <p>Nome: <%= proposal.user.name%></p>
+    <p>Data inicial: <%= proposal.start_date.strftime("%d/%m/%Y")%></p>
+    <p>Data final: <%= proposal.end_date.strftime("%d/%m/%Y")%></p>
+    <p>Telefone: <%= proposal.user.phone%></p>
+    <p>Email: <%= proposal.user.email%></p>
+  </div>
+  <% end %>
