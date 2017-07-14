@@ -8,10 +8,12 @@ Rails.application.routes.draw do
 
      resources :proposals, only: [:new, :index, :create] do
        get 'accept', on: :member
-     end
+    end
 
      resources :prices, only: [:new, :create]
    end
 
-   resources :proposals, only: [:show]
+   resources :proposals, only: [:show] do
+     get 'my_proposals', on: :collection
+   end
 end

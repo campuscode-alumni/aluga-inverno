@@ -20,6 +20,10 @@ class ProposalsController < ApplicationController
    end
  end
 
+ def my_proposals
+   
+ end
+
   def new
     @prop = Property.find(params[:property_id])
     @proposal = Proposal.new(property: @prop)
