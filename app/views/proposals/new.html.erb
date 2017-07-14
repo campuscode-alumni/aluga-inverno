@@ -2,7 +2,7 @@
   <p><%= msg %></p>
 <% end %>
 <%= form_for [@prop, @proposal] do |f| %>
-  
+
 <div class="form-group">
   <%= f.label :start_date, 'data inicial' %>
   <%= f.text_field :start_date, {class: "form-control"}  %>

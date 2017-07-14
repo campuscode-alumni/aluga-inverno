@@ -7,5 +7,6 @@ FactoryGirl.define do
     rent_purpose "MyString"
     extra_info "MyText"
     property
+    user
   end
 end

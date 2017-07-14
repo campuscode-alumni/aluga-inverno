@@ -3,9 +3,10 @@ require 'rails_helper'
 feature 'Owner see proposals' do
 
  scenario 'successefully' do
-   owner = Owner.create(email: 'teste@teste.com',name: 'teste', password: '123456', phone: '4444-4444')
-   property = create(:property,owner: owner)
-   proposal = create(:proposal,property:property)
+   owner = Owner.create(email: 'teste@teste.com', name: 'teste', password: '123456', phone: '4444-4444')
+   user = create(:user, name: 'Lucas', phone: '1234-1234', email: 'lucasfe@gmail.com')
+   property = create(:property, owner: owner)
+   proposal = create(:proposal, property: property, user: user)
 
    login_as(owner, scope: :owner)
    visit root_path
@@ -24,22 +25,17 @@ feature 'Owner see proposals' do
 
  scenario 'Owner only see proposals of his properties' do
 
-   owner = Owner.create(email: 'teste@teste.com',name: 'teste', password: '123456', phone: '4444-4444')
+   owner = create(:owner, email: 'teste10@teste.com.br')
 
-   property = Property.create(maximum_guests: 10, minimum_rent: 4,
-     maximum_rent: 10, daily_rate: 230.0, property_type: 'Chale',
-     rent_purpose: 'Festas', property_location: 'SP',
-     description: 'chale para festa', rules:'sem cachorros', picture: 'sem foto',owner: owner)
+   property = create(:property, owner: owner, property_type: 'Chale')
 
-   proposal = Proposal.create(start_date:'2017-05-06', end_date:'2017-05-07',
-    total_amount:'100.50', total_guests:2, rent_purpose: 'Ferias', name:'Joao',
-    email:'joao@joao.com', cpf:'123456789-99', phone:'1234-1234',
-    extra_info: 'Quero passar minhas ferias nessa propriedade!',property: property)
+   proposal = create(:proposal)
 
    another_owner = Owner.create(email: 'Rogerio@teste.com',name: 'Rogerio',
     password: '102030', phone: '555-555')
 
    login_as(another_owner, scope: :owner)
+
    visit root_path
 
    click_on 'Chale'

@@ -13,10 +13,10 @@
       <%end%>
 
   </p>
-  <p>Nome: <%= proposal.name%></p>
+  <p>Nome: <%= proposal.user.name%></p>
   <p>Data inicial: <%= proposal.start_date.strftime("%d/%m/%Y")%></p>
   <p>Data final: <%= proposal.end_date.strftime("%d/%m/%Y")%></p>
-  <p>Telefone: <%= proposal.phone%></p>
-  <p>Email: <%= proposal.email%></p>
+  <p>Telefone: <%= proposal.user.phone%></p>
+  <p>Email: <%= proposal.user.email%></p>
 </div>
 <% end %>

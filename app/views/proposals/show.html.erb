@@ -6,6 +6,7 @@ p<h1>Detalhes da Proposta</h1>
   <li>Data final: <%=@proposal.end_date.strftime("%d/%m/%Y") %></li>
   <li>Total: R$ <%=format("%.2f", @proposal.total_amount)%></li>
   <li>Email: <%= @proposal.user.email %></li>
+  <li>Telefone: <%= @proposal.user.phone %></li>
   <li>Proposito: <%=@proposal.rent_purpose %></li>
   <li>Infs Extras: <%=@proposal.extra_info %></li>
 </ul>
