@@ -6,6 +6,7 @@ Rails.application.routes.draw do
    resources :properties, only: [:show, :new, :create]  do
      get 'filter', on: :collection
 
+    resources :review, only: [:new] 
      resources :proposals, only: [:new, :index, :create] do
        get 'accept', on: :member
      end
@@ -14,4 +15,5 @@ Rails.application.routes.draw do
    end
 
    resources :proposals, only: [:show]
+
 end
