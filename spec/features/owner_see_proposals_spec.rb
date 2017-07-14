@@ -50,8 +50,8 @@ feature 'Owner see proposals' do
 
    proposal = create(:proposal)
 
-   owner = Owner.create(email: 'teste@teste.com',name: 'teste', password: '123456', phone: '4444-4444')
-   login_as(owner, scope: :owner)
+   another_owner = Owner.create(email: 'teste@teste.com',name: 'teste', password: '123456', phone: '4444-4444')
+   login_as(another_owner, scope: :owner)
 
    visit property_proposals_path(proposal.property.id)
    expect(current_path).to eq root_path
@@ -78,5 +78,17 @@ feature 'Owner see proposals' do
    within("div#proposal_#{proposal.id}") do
      expect(page).to have_content('Proposta Aceita')
    end
+  end
+
+  scenario 'not exist proposals' do
+    owner = Owner.create(email: 'teste@teste.com',name: 'teste', password: '123456', phone: '4444-4444')
+    property = create(:property,owner: owner)
+    login_as(owner, scope: :owner)
+    visit root_path
+
+    click_on 'Casa'
+    click_on 'Ver Propostas'
+
+    expect(page).to have_content('Sem Propostas para essa propriedade!')
   end
 end
