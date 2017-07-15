@@ -2,18 +2,18 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :owners
   root to: "home#index"
+  get  'my_proposals', to: 'proposals#my_proposals'
+  resources :properties, only: [:show, :new, :create]  do
+    get 'filter', on: :collection
 
-   resources :properties, only: [:show, :new, :create]  do
-     get 'filter', on: :collection
-
-     resources :proposals, only: [:new, :index, :create] do
-       get 'accept', on: :member
-    end
+    resources :proposals, only: [:new, :index, :create] do
+      get 'accept', on: :member
+  end
 
      resources :prices, only: [:new, :create]
    end
 
    resources :proposals, only: [:show] do
-     get 'my_proposals', on: :collection
+     get 'receipt', on: :member
    end
 end

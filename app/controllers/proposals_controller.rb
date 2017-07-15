@@ -1,7 +1,7 @@
 class ProposalsController < ApplicationController
 
   before_action :authenticate_owner!, only:[:index]
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :my_proposals]
 
 
   def index
@@ -21,7 +21,12 @@ class ProposalsController < ApplicationController
  end
 
  def my_proposals
-   
+   @proposals = current_user.proposals
+ end
+
+ def receipt
+   @proposal = Proposal.find(params[:id])
+   @owner = @proposal.property.owner
  end
 
   def new

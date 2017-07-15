@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714011543) do
+ActiveRecord::Schema.define(version: 20170715011628) do
 
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170714011543) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "accept", default: 0
+    t.date "accepted_at"
     t.index ["property_id"], name: "index_proposals_on_property_id"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end

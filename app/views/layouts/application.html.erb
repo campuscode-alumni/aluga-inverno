@@ -29,7 +29,7 @@
           <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_path %></li>
             <li><%= link_to 'Cadastrar uma Propiedade', new_property_path%></li>
-            <li><%= link_to 'Minhas Propostas', my_proposals_proposals_path%></li>
+            <li><%= link_to 'Minhas Propostas', my_proposals_path%></li>
           </ul>
             <%= form_tag(filter_properties_path, {method: "get", class: "navbar-form navbar-right" }) do %>
               <%= label_tag(:filter, "Busca") %>

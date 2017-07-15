@@ -1,0 +1,4 @@
+<% @proposals.each do |proposal|%>
+  <%= proposal.property.property_location %>
+  <%= link_to 'Ver Comprovante' , receipt_proposal_path(proposal)%>
+<% end %>

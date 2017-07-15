@@ -1,0 +1,16 @@
+<center>Comprovante de Locação<center>
+<p>
+Eu, <%=@owner.name%> do CPF n: <%=@owner.cpf%>, declaro para os<br>
+devidos fins que alugo o imovel sito a: <%=@proposal.property.property_location %><br>
+para <%= current_user.name %> portador do CPF: <%= current_user.cpf %> , entre o periodo de<br>
+<%= @proposal.start_date.strftime("%d/%m/%Y") %> a <%= @proposal.end_date.strftime("%d/%m/%Y") %>, pelo valor total de <%= number_to_currency(@proposal.total_amount) %>
+</p>
+<p>
+Para este período devem ser respeitados a seguinte regras de uso:<br>
+- O imovel nao deve ser hospedado por mais que <%= @proposal.property.maximum_guests %> pessoas;<br>
+- O prazo de locacao deve ser respeitado e casos de renovacoes devem ser tratados diretamente com o proprietario;<br>
+- Alem destas devem ser respeitadas as seguintes regras:<br>
+<%= @proposal.property.rules%>
+</p>
+
+<right>Sao Paulo, <%= I18n.l(@proposal.accepted_at, format: :long)%></right>
