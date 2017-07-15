@@ -9,4 +9,12 @@ class Property < ApplicationRecord
    :rent_purpose, :property_location, :description, :rules, :daily_rate,
    :picture, presence: true
 
+  def has_accepted_proposal?(user)
+    return false if user.nil?
+    proposals.where(user: user, accept:1).any?
+  end
+
+  def has_review_from?(user)
+    reviews.where(user: user).any?
+  end
 end

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-feature 'User avability properties' do
+feature 'User evaluate properties' do
 
-  scenario 'successefully' do
+  scenario 'successfully' do
     user = create(:user, email: 'joao@joao.com', name: 'Joao H')
     property = create(:property)
-
+    proposals = create(:proposal, property: property, user:user, accept: 1)
     login_as(user, scope: :user)
 
     visit root_path
@@ -24,7 +24,30 @@ feature 'User avability properties' do
     expect(page).to have_content('Muito bom!')
   end
 
-  scenario 'Only users who are connected to the property can evaluate it' do
-      
+  scenario 'only if user has a accepted proposal' do
+    user = create(:user, email: 'joao@joao.com', name: 'Joao H')
+    property = create(:property)
+    proposals = create(:proposal, property: property, user:user, accept: 0)
+
+    login_as(user, scope: :user)
+    visit root_path
+
+    click_on 'Casa'
+
+    expect(page).not_to have_link('Avaliar este imovel')
+  end
+
+  scenario 'and cannot review more than one time' do
+    user = create(:user, email: 'joao@joao.com', name: 'Joao H')
+    property = create(:property)
+    proposals = create(:proposal, property: property, user:user, accept: 1)
+    review = create(:review, user: user, property: property)
+
+    login_as(user, scope: :user)
+    visit root_path
+
+    click_on 'Casa'
+
+    expect(page).not_to have_link('Avaliar este imovel')
   end
 end
