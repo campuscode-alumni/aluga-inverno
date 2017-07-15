@@ -13,7 +13,7 @@ feature 'User avability properties' do
     click_on 'Casa'
     click_on 'Avaliar este imovel'
 
-    check '5 estrelas'
+    select '5 estrelas'
     fill_in 'Comentario', with: 'Muito bom!'
 
     click_on 'Enviar'
@@ -22,5 +22,9 @@ feature 'User avability properties' do
     expect(page).to have_content('Joao H')
     expect(page).to have_content('5 estrelas')
     expect(page).to have_content('Muito bom!')
+  end
+
+  scenario 'Only users who are connected to the property can evaluate it' do
+      
   end
 end

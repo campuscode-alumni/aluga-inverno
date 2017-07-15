@@ -41,3 +41,12 @@
   <div class="">
       <%= link_to 'Avaliar este imovel', new_property_review_path(@property)%>
   </div>
+
+  <h2>Avaliações</h2>
+  <% @property.reviews.each do |review|%>
+    <ul>
+      <li>Nome: <%=review.user.name%></li>
+      <li>Avaliação: <%=review.rate%> estrelas</li>
+      <li>Comentario: <%=review.comment%></li>
+    </ul>
+  <% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
    resources :properties, only: [:show, :new, :create]  do
      get 'filter', on: :collection
 
-    resources :review, only: [:new] 
+    resources :reviews, only: [:new, :create] 
      resources :proposals, only: [:new, :index, :create] do
        get 'accept', on: :member
      end
