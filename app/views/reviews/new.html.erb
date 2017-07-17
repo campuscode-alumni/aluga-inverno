@@ -1,0 +1,12 @@
+<%= form_for [@property, @review] do |f| %>
+  <div class="form-group">
+      <%= f.select(:rate,[ ['1 estrela',1],['2 estrelas',2],['3 estrelas',3],['4 estrelas',4],['5 estrelas',5]])%>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment, 'Comentario' %>
+    <%= f.text_area :comment, {class: "form-control"}  %>
+  </div>
+  <div class="form-group text-center">
+    <%= f.submit 'Enviar', {class: "btn btn-primary"} %>
+  </div>
+<% end %>

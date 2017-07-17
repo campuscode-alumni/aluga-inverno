@@ -38,3 +38,17 @@
   <div class="">
       <%= link_to 'Configurar Preco', new_property_price_path(@property)%>
   </div>
+  <%  if @property.has_accepted_proposal?(current_user) && !@property.has_review_from?(current_user) %>
+    <div class="">
+        <%= link_to 'Avaliar este imovel', new_property_review_path(@property)%>
+    </div>
+  <% end %>
+
+  <h2>Avaliações</h2>
+  <% @property.reviews.each do |review|%>
+    <ul>
+      <li>Nome: <%=review.user.name%></li>
+      <li>Avaliação: <%=review.rate%> estrelas</li>
+      <li>Comentario: <%=review.comment%></li>
+    </ul>
+  <% end %>
