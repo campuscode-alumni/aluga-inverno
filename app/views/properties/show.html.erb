@@ -5,7 +5,7 @@
   <%else%>
     <%= image_tag("default.jpeg", class: 'default-image')%>
   <%end%>
-  <li>Tipo: <%=@property.property_type%></li>
+  <li>Tipo: <%=@property.property_type.name%></li>
   <li>Capacidade maxima: <%=@property.maximum_guests%></li>
   <li>Minimo dias de aluguel: <%=@property.minimum_rent%></li>
   <li>Maximo dias de aluguel: <%=@property.maximum_rent%></li>

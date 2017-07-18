@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'Owner can add photo' do
   scenario 'Sucessfully' do
       owner = create(:owner)
-      property = create(:property, property_type: 'Casa de Campo', owner: owner)
+      property_type = create(:property_type, name: 'Casa de Campo')
+      property = create(:property, property_type: property_type, owner: owner)
       login_as(owner, scope: :owner)
 
       visit root_path
@@ -18,7 +19,9 @@ feature 'Owner can add photo' do
 
   scenario 'default not image' do
     owner = create(:owner)
-    property = create(:property, property_type: 'Casa de Campo', owner: owner,photo: nil)
+    property_type = create(:property_type, name: 'Casa de Campo')
+    property = create(:property, property_type: property_type, owner: owner, photo: nil)
+
     login_as(owner, scope: :owner)
     visit root_path
 

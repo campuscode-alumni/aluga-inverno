@@ -4,7 +4,6 @@ FactoryGirl.define do
     minimum_rent 10
     maximum_rent 100
     daily_rate "9.99"
-    property_type "Casa"
     rent_purpose "Festas"
     property_location "Sao Paulo"
     description "Propiedade para aluguel na praia"
@@ -12,5 +11,6 @@ FactoryGirl.define do
     rules "Rules"
     photo  { File.new("#{Rails.root}/spec/images/casa_01.jpeg") }
     owner
+    property_type
   end
 end

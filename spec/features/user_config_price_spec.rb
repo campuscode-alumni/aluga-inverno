@@ -5,14 +5,15 @@ feature 'Visitor conf price' do
     owner = Owner.create(email: 'campus@campus.com.br', password: '1234567', name: 'Joao H', phone: '91111-2222')
     login_as(owner, scope: :owner)
 
+    property_type = create(:property_type, name: 'Chale')
     property = Property.create(maximum_guests: 10, minimum_rent: 4,
-      maximum_rent: 10, daily_rate: 230.0, property_type: 'chale',
-      rent_purpose: 'Festas', property_location: 'SP',
-      description: 'chale para festa', rules:'sem cachorros', picture: 'sem foto',owner: owner)
+                               maximum_rent: 10, daily_rate: 230.0, property_type: property_type,
+                               rent_purpose: 'Festas', property_location: 'SP',
+                               description: 'chale para festa', rules:'sem cachorros', picture: 'sem foto',owner: owner)
 
 
     visit root_path
-    click_on 'chale'
+    click_on 'Chale'
     click_on 'Configurar Preco'
 
     fill_in 'Temporada', with: 'Natal'
@@ -30,5 +31,5 @@ feature 'Visitor conf price' do
     expect(page).to have_content('Data fim: 08/08/2017')
     expect(page).to have_content('Valor da diaria: 100.00')
 
-    end
+  end
 end

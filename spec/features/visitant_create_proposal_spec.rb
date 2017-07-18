@@ -5,12 +5,13 @@ feature 'Visitante realiza proposta' do
 
     user = create(:user, name: 'Ana colombia', email: 'ana@colombia.com.br', phone: '4444-4444')
     #prepare data
-    prop = create(:property, daily_rate: 50)
+    property_type = create(:property_type, name: 'Chale')
+    prop = create(:property, daily_rate: 50, property_type: property_type)
     login_as(user, scope: :user)
 
     #simulate user action
     visit root_path
-    click_on 'Casa'
+    click_on 'Chale'
     click_on 'Efetuar Oferta'
 
 
@@ -33,12 +34,14 @@ feature 'Visitante realiza proposta' do
 
   scenario 'check aviability of property before save proposal' do
     #prepare data
-    prop = create(:proposal, start_date:'2017-08-06', end_date: '2017-08-07', accept:1)
+    property_type = create(:property_type, name: 'Chale')
+    property = create(:property, daily_rate: 50, property_type: property_type)
+    prop = create(:proposal, start_date:'2017-08-06', end_date: '2017-08-07', accept:1, property: property)
     user = create(:user, email: 'rogerio@bispo.com.br')
     login_as(user, scope: :user)
     #simulate user action
     visit root_path
-    click_on 'Casa'
+    click_on 'Chale'
     click_on 'Efetuar Oferta'
 
 
@@ -53,30 +56,31 @@ feature 'Visitante realiza proposta' do
   end
 
   scenario 'Calculate value acording to prices' do
-      user = create(:user, name: 'Lucas', email:'lucasfe@gmail.com')
-      prop = create(:property,daily_rate: 20)
-      price = create(:price, property: prop, start_date: '2017-07-11', end_date: '2017-07-21',total_amount: 500)
-      login_as(user, :scope => :user)
+    user = create(:user, name: 'Lucas', email:'lucasfe@gmail.com')
+    property_type = create(:property_type, name: 'Chale')
+    prop = create(:property,daily_rate: 20, property_type: property_type)
+    price = create(:price, property: prop, start_date: '2017-07-11', end_date: '2017-07-21',total_amount: 500)
+    login_as(user, :scope => :user)
 
-      visit root_path
+    visit root_path
 
-      click_on 'Casa'
-      click_on 'Efetuar Oferta'
+    click_on 'Chale'
+    click_on 'Efetuar Oferta'
 
 
-      fill_in 'data inicial', with: '2017-07-11'
-      fill_in 'data final', with: '2017-07-20'
-      fill_in 'proposito', with: 'Ferias'
-      fill_in 'infs extra', with: 'None'
+    fill_in 'data inicial', with: '2017-07-11'
+    fill_in 'data final', with: '2017-07-20'
+    fill_in 'proposito', with: 'Ferias'
+    fill_in 'infs extra', with: 'None'
 
-      click_on 'Enviar'
+    click_on 'Enviar'
 
-      expect(page).to have_content('Detalhes da Proposta')
-      expect(page).to have_content('Nome: Lucas')
-      expect(page).to have_content('Data inicial: 11/07/2017')
-      expect(page).to have_content('Data final: 20/07/2017')
-      expect(page).to have_content('Total: R$ 5000.00')
-      expect(page).to have_content('lucasfe@gmail.com')
+    expect(page).to have_content('Detalhes da Proposta')
+    expect(page).to have_content('Nome: Lucas')
+    expect(page).to have_content('Data inicial: 11/07/2017')
+    expect(page).to have_content('Data final: 20/07/2017')
+    expect(page).to have_content('Total: R$ 5000.00')
+    expect(page).to have_content('lucasfe@gmail.com')
 
   end
 end

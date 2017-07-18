@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717225319) do
+ActiveRecord::Schema.define(version: 20170718232731) do
 
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20170717225319) do
     t.integer "minimum_rent"
     t.integer "maximum_rent"
     t.decimal "daily_rate"
-    t.string "property_type"
     t.string "rent_purpose"
     t.string "property_location"
     t.text "description"
@@ -64,7 +63,15 @@ ActiveRecord::Schema.define(version: 20170717225319) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer "property_type_id"
     t.index ["owner_id"], name: "index_properties_on_owner_id"
+    t.index ["property_type_id"], name: "index_properties_on_property_type_id"
+  end
+
+  create_table "property_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "proposals", force: :cascade do |t|

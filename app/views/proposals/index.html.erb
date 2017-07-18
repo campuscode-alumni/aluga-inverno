@@ -7,7 +7,7 @@
   <div id="proposal_<%=proposal.id%>">
     <p>
         Propiedade:
-        <%= proposal.property.property_type%>
+        <%= proposal.property.property_type.name%>
       - <%= proposal.property.rent_purpose%>
       - <%= proposal.property.property_location%>
        <%if proposal.accept == 1 %>
