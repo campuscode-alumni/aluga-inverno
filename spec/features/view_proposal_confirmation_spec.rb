@@ -19,7 +19,7 @@ feature 'View Proposal Confirmation' do
       click_on 'Minhas Propostas'
       click_on 'Ver Comprovante'
 
-      expect(page).to have_css('center', 'Comprovante de locação')
+      expect(page).to have_css('center', text: 'Comprovante de locação')
       expect(page).to have_content('Eu, Carlos Adao do CPF n: 11111111111')
       expect(page).to have_content('que alugo o imovel sito a: Avenida brasil praia grande')
       expect(page).to have_content('para Rogerio dos santos bispo portador do CPF: 32332323233')

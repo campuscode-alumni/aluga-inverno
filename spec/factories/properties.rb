@@ -10,6 +10,7 @@ FactoryGirl.define do
     description "Propiedade para aluguel na praia"
     picture "Sem foto "
     rules "Rules"
+    photo  { File.new("#{Rails.root}/spec/images/casa_01.jpeg") }
     owner
   end
 end

@@ -28,7 +28,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_path %></li>
-            <li><%= link_to 'Cadastrar uma Propiedade', new_property_path%></li>
+            <li><%= link_to 'Cadastrar-se', register_path %></li>
+            <li><%= link_to 'Cadastrar uma Propriedade', new_property_path%></li>
             <li><%= link_to 'Minhas Propostas', my_proposals_path%></li>
           </ul>
             <%= form_tag(filter_properties_path, {method: "get", class: "navbar-form navbar-right" }) do %>
@@ -44,8 +45,13 @@
     <p><%=flash[:error]%> </p>
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
-      <div class="container">
-          <%= yield %>
-      </div>
+     <div class="container">
+     <%if owner_signed_in?%>
+        <div class="pull-right">
+          Bem vindo: <%= current_owner.name%>
+        </div>
+      <%end%>
+      <%= yield %>
+    </div>
   </body>
 </html>

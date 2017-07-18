@@ -1,5 +1,6 @@
 class Property < ApplicationRecord
-
+  has_attached_file :photo
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   has_many :proposals
   has_many :prices
   has_many :reviews

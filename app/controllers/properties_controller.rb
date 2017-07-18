@@ -18,6 +18,19 @@ class PropertiesController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @property = Property.find(params[:id])
+  end
+
+  def update
+    @property = Property.find(params[:id])
+    @property.update(property_params)
+    redirect_to @property
+  end
+
+
+
   def filter
     @properties = Property.where("property_location like  ?  ", "%#{params[:filter]}%")
   end
@@ -26,7 +39,7 @@ private
   def property_params
     params.require(:property).permit(:property_type, :maximum_guests,
     :minimum_rent, :maximum_rent, :rent_purpose, :property_location,
-    :description, :rules, :daily_rate, :picture)
+    :description, :rules, :daily_rate, :picture, :photo)
   end
 
 end

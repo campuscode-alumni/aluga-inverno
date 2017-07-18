@@ -1,0 +1,47 @@
+<%= form_for @property, html: { multipart: true } do |f| %>
+  <div class="">
+    <%= f.label :property_type, 'Tipo' %>
+    <%= f.text_field :property_type %>
+  </div>
+  <div class="">
+    <%= f.label :maximum_guests, 'Capacidade maxima' %>
+    <%= f.text_field :maximum_guests %>
+  </div>
+  <div class="">
+    <%= f.label :minimum_rent, 'Minimo dias de aluguel' %>
+    <%= f.text_field :minimum_rent %>
+  </div>
+  <div class="">
+    <%= f.label :maximum_rent, 'Maximo dias de aluguel' %>
+    <%= f.text_field :maximum_rent %>
+  </div>
+  <div class="">
+    <%= f.label :rent_purpose, 'Finalidade' %>
+    <%= f.text_field :rent_purpose %>
+  </div>
+  <div class="">
+    <%= f.label :property_location, 'Localizacao' %>
+    <%= f.text_field :property_location %>
+  </div>
+  <div class="">
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="">
+    <%= f.label :rules, 'Regras' %>
+    <%= f.text_field :rules %>
+  </div>
+  <div class="">
+    <%= f.label :daily_rate, 'Valor:' %>
+    <%= f.text_field :daily_rate %>
+  </div>
+  <div class="">
+    <%= f.label :picture, 'Foto' %>
+    <%= f.text_field :picture %>
+  </div>
+  <div class="">
+    <%= f.label :photo, 'Imagem' %>
+    <%= f.file_field :photo %>
+  </div>
+  <%= f.submit 'Enviar'%>
+<% end %>

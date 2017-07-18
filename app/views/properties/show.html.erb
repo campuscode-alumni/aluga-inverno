@@ -1,5 +1,10 @@
 <h1>Detalhes da Propiedade</h1>
 <ul>
+  <% if @property.photo.present? %>
+    <li><%=  image_tag @property.photo.url %></li>
+  <%else%>
+    <%= image_tag("default.jpeg", class: 'default-image')%>
+  <%end%>
   <li>Tipo: <%=@property.property_type%></li>
   <li>Capacidade maxima: <%=@property.maximum_guests%></li>
   <li>Minimo dias de aluguel: <%=@property.minimum_rent%></li>
@@ -29,6 +34,9 @@
     <li>Email: <%=@property.owner.email%></li>
     <li>Telefone: <%=@property.owner.phone%></li>
   </ul>
+  <div class="">
+      <%= link_to 'Editar', edit_property_path(@property)%>
+  </div>
   <% if current_owner == @property.owner %>
      <%= link_to 'Ver Propostas', property_proposals_path(@property) %>
   <% end %>

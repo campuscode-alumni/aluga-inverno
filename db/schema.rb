@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170715011628) do
+ActiveRecord::Schema.define(version: 20170717225319) do
 
   create_table "owners", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(version: 20170715011628) do
     t.string "phone"
     t.string "rules"
     t.integer "owner_id"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["owner_id"], name: "index_properties_on_owner_id"
   end
 

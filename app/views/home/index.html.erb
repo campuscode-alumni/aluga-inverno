@@ -7,6 +7,11 @@
     <div class="panel-heading"></div>
     <div class="panel-body">
         <ul class="list-group">
+          <% if property.photo.present? %>
+              <li class="list-group-item"><%=  image_tag property.photo.url, class: 'img-responsive' %></li>
+          <%else%>
+              <li class="list-group-item"><%= image_tag("default.jpeg", class: 'img-responsive')%></li>
+          <%end%>
           <li class="list-group-item"><%= link_to property.property_type, property %></li>
           <li class="list-group-item"><%=property.property_location%></li>
           <li class="list-group-item" ><%=property.rent_purpose%></li>
