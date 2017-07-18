@@ -36,7 +36,7 @@ feature 'Visitor visit home and see home' do
     visit root_path
     click_on 'chale'
 
-    expect(page).to have_css('h1', text: 'Detalhes da Propiedade')
+    expect(page).to have_css('h1', text: 'Detalhes da Propriedade')
     expect(page).to have_css('li', text: 'Tipo: chale')
     expect(page).to have_css('li', text: 'Capacidade maxima: 10')
     expect(page).to have_css('li', text: 'Minimo dias de aluguel: 2')

@@ -6,7 +6,7 @@ feature 'Visitor create property' do
     login_as(owner, scope: :owner)
 
     visit root_path
-    click_on 'Cadastrar uma Propiedade'
+    click_on 'Cadastrar uma Propriedade'
 
     fill_in 'Tipo', with: 'Apartamento'
     fill_in 'Capacidade maxima', with: 10
@@ -21,7 +21,7 @@ feature 'Visitor create property' do
 
     click_on 'Enviar'
 
-    expect(page).to have_css('h1', text: 'Detalhes da Propiedade')
+    expect(page).to have_css('h1', text: 'Detalhes da Propriedade')
     expect(page).to have_css('li', text: 'Tipo: Apartamento')
     expect(page).to have_css('li', text: 'Capacidade maxima: 10')
     expect(page).to have_css('li', text: 'Minimo dias de aluguel: 2')
@@ -44,7 +44,7 @@ feature 'Visitor create property' do
 
     visit root_path
     login_as(owner, :scope => :owner)
-    click_on 'Cadastrar uma Propiedade'
+    click_on 'Cadastrar uma Propriedade'
 
     fill_in 'Tipo', with: ''
     fill_in 'Capacidade maxima', with: 0
@@ -56,9 +56,7 @@ feature 'Visitor create property' do
     fill_in 'Regras', with: ''
     fill_in 'Valor', with: 0
     fill_in 'Foto', with: ''
-    fill_in 'Nome', with: ''
-    fill_in 'Email', with: ''
-    fill_in 'Telefone', with: ''
+    
 
     click_on 'Enviar'
 
@@ -69,7 +67,7 @@ feature 'Visitor create property' do
   scenario 'User not login' do
 
     visit root_path
-    click_on 'Cadastrar uma Propiedade'
+    click_on 'Cadastrar uma Propriedade'
 
     expect(current_path).to eq new_owner_session_path
 

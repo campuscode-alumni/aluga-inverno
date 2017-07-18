@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Owner registre fields' do
   scenario 'sucessfully' do
+
     visit root_path
     click_on 'Cadastrar-se'
     click_on 'Quero Anunciar um Imovel'
