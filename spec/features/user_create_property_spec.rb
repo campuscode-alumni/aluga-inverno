@@ -3,15 +3,17 @@ require 'rails_helper'
 feature 'Visitor create property' do
   scenario 'successefully' do
     owner =   Owner.create(email: 'campus@campus.com.br', password: '1234567', name: 'Joao H', phone: '91111-2222')
+
     purpose = create(:purpose, name: 'Passar Ferias')
     other_purpose = create(:purpose, name: 'Evento de empresa')
+    type = PropertyType.create(name: 'Casa na Praia')
 
     login_as(owner, scope: :owner)
 
     visit root_path
     click_on 'Cadastrar uma Propriedade'
 
-    fill_in 'Tipo', with: 'Apartamento'
+    select 'Casa na Praia', from: 'Tipo'
     fill_in 'Capacidade maxima', with: 10
     fill_in 'Minimo dias de aluguel', with: 2
     fill_in 'Maximo dias de aluguel', with: 5
@@ -26,7 +28,7 @@ feature 'Visitor create property' do
     click_on 'Enviar'
 
     expect(page).to have_css('h1', text: 'Detalhes da Propriedade')
-    expect(page).to have_css('li', text: 'Tipo: Apartamento')
+    expect(page).to have_content type.name
     expect(page).to have_css('li', text: 'Capacidade maxima: 10')
     expect(page).to have_css('li', text: 'Minimo dias de aluguel: 2')
     expect(page).to have_css('li', text: 'Maximo dias de aluguel: 5')
@@ -52,7 +54,6 @@ feature 'Visitor create property' do
     login_as(owner, :scope => :owner)
     click_on 'Cadastrar uma Propriedade'
 
-    fill_in 'Tipo', with: ''
     fill_in 'Capacidade maxima', with: 0
     fill_in 'Minimo dias de aluguel', with:0
     fill_in 'Maximo dias de aluguel', with:0

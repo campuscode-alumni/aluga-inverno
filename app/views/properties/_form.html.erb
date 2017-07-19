@@ -1,7 +1,7 @@
 <%= form_for @property, html: { multipart: true } do |f| %>
   <div class="">
-    <%= f.label :property_type, 'Tipo' %>
-    <%= f.text_field :property_type %>
+    <%= f.label :property_type_id, 'Tipo' %>
+    <%= f.collection_select :property_type_id, @property_types , :id, :name %>
   </div>
   <div class="">
     <%= f.label :maximum_guests, 'Capacidade maxima' %>

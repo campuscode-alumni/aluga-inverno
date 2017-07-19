@@ -5,7 +5,8 @@ feature 'View Proposal Confirmation' do
 
       owner = create(:owner, cpf: '11111111111', name: 'Carlos Adao')
       user = create(:user, name: 'Rogerio dos santos bispo', cpf: '32332323233')
-      property = create(:property, owner: owner, property_type: 'Casa Praia',
+      property_type = create(:property_type, name: 'Chale')
+      property = create(:property, owner: owner, property_type: property_type,
       property_location: 'Avenida brasil praia grande',
       rules: 'Não e permitido animais, A casa deve estar limpa na devolucao', maximum_guests: 40)
       proposal = create(:proposal, property: property, user: user,

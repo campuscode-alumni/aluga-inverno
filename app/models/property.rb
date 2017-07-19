@@ -4,11 +4,13 @@ class Property < ApplicationRecord
   has_many :proposals
   has_many :prices
   has_many :reviews
+
   has_many :property_purposes
   has_many :purposes, through: :property_purposes
-
   belongs_to :owner
-  validates :property_type, :maximum_guests, :minimum_rent, :maximum_rent,
+  belongs_to :property_type
+  belongs_to :owner
+  validates :maximum_guests, :minimum_rent, :maximum_rent,
    :property_location, :description, :rules, :daily_rate,
    :picture, presence: true
 

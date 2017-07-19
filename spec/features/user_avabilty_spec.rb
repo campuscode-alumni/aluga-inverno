@@ -4,7 +4,8 @@ feature 'User evaluate properties' do
 
   scenario 'successfully' do
     user = create(:user, email: 'joao@joao.com', name: 'Joao H')
-    property = create(:property)
+    property_type = create(:property_type, name: 'Casa')
+    property = create(:property, property_type: property_type)
     proposals = create(:proposal, property: property, user:user, accept: 1)
     login_as(user, scope: :user)
 
@@ -26,7 +27,8 @@ feature 'User evaluate properties' do
 
   scenario 'only if user has a accepted proposal' do
     user = create(:user, email: 'joao@joao.com', name: 'Joao H')
-    property = create(:property)
+    property_type = create(:property_type, name: 'Casa')
+    property = create(:property, property_type: property_type)
     proposals = create(:proposal, property: property, user:user, accept: 0)
 
     login_as(user, scope: :user)
@@ -39,7 +41,8 @@ feature 'User evaluate properties' do
 
   scenario 'and cannot review more than one time' do
     user = create(:user, email: 'joao@joao.com', name: 'Joao H')
-    property = create(:property)
+    property_type = create(:property_type, name: 'Casa')
+    property = create(:property, property_type: property_type)
     proposals = create(:proposal, property: property, user:user, accept: 1)
     review = create(:review, user: user, property: property)
 

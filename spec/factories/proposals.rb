@@ -4,7 +4,6 @@ FactoryGirl.define do
     end_date "2017-08-07"
     total_amount "9.99"
     total_guests 1
-    rent_purpose "MyString"
     extra_info "MyText"
     property
     user
