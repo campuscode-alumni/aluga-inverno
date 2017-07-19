@@ -28,9 +28,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_path %></li>
-            <%unless owner_signed_in?%>
-              <li><%= link_to 'Cadastrar-se', register_path %></li>
+
+            <% if(!owner_signed_in? && !user_signed_in?)  %>
+              <li><%= link_to 'Acessar', register_path %></li>
             <%end%>
+
             <li><%= link_to 'Cadastrar uma Propriedade', new_property_path%></li>
             <li><%= link_to 'Minhas Propostas', my_proposals_path%></li>
           </ul>
@@ -48,9 +50,15 @@
      <p class="notice"><%= notice %></p>
      <p class="alert"><%= alert %></p>
      <div class="container">
-     <%if owner_signed_in?%>
+     <%if owner_signed_in? %>
         <div class="pull-right">
           Bem vindo: <%= current_owner.name%>
+          <%= link_to 'Sair', destroy_owner_session_path, method: :delete %>
+        </div>
+      <%elsif user_signed_in? %>
+      <div class="pull-right">
+        Bem vindo: <%= current_user.email%>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
         </div>
       <%end%>
       <%= yield %>

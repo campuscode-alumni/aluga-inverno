@@ -52,7 +52,7 @@ pt-BR:
     models:
       user: Usuário
       owner: Proprietário
-  devise:
+  owners:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
       new:

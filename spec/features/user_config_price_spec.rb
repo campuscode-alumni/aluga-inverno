@@ -7,7 +7,7 @@ feature 'Visitor conf price' do
 
     property = Property.create(maximum_guests: 10, minimum_rent: 4,
       maximum_rent: 10, daily_rate: 230.0, property_type: 'chale',
-      rent_purpose: 'Festas', property_location: 'SP',
+      property_location: 'SP',
       description: 'chale para festa', rules:'sem cachorros', picture: 'sem foto',owner: owner)
 
 

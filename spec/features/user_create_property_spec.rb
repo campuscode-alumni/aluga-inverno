@@ -3,6 +3,9 @@ require 'rails_helper'
 feature 'Visitor create property' do
   scenario 'successefully' do
     owner =   Owner.create(email: 'campus@campus.com.br', password: '1234567', name: 'Joao H', phone: '91111-2222')
+    purpose = create(:purpose, name: 'Passar Ferias')
+    other_purpose = create(:purpose, name: 'Evento de empresa')
+
     login_as(owner, scope: :owner)
 
     visit root_path
@@ -12,7 +15,8 @@ feature 'Visitor create property' do
     fill_in 'Capacidade maxima', with: 10
     fill_in 'Minimo dias de aluguel', with: 2
     fill_in 'Maximo dias de aluguel', with: 5
-    fill_in 'Finalidade', with: 'Passar Ferias'
+    check   'Passar Ferias'
+    check   'Evento de empresa'
     fill_in 'Localizacao', with: 'BA'
     fill_in 'Descrição', with: 'Apartamento perto do Centro'
     fill_in 'Regras', with: 'Não fumar no apartamento'
@@ -26,7 +30,6 @@ feature 'Visitor create property' do
     expect(page).to have_css('li', text: 'Capacidade maxima: 10')
     expect(page).to have_css('li', text: 'Minimo dias de aluguel: 2')
     expect(page).to have_css('li', text: 'Maximo dias de aluguel: 5')
-    expect(page).to have_css('li', text: 'Finalidade: Passar Ferias')
     expect(page).to have_css('li', text: 'Localizacao: BA')
     expect(page).to have_css('li', text: 'Descrição: Apartamento perto do Centro')
     expect(page).to have_css('li', text: 'Regras: Não fumar no apartamento')
@@ -36,11 +39,14 @@ feature 'Visitor create property' do
     expect(page).to have_css('li', text: 'Nome: Joao H')
     expect(page).to have_css('li', text: 'Email: campus@campus.com.br')
     expect(page).to have_css('li', text: 'Telefone: 91111-2222')
+    expect(page).to have_css('li', text: 'Finalidade: Passar Ferias Evento de empresa')
 
   end
 
   scenario 'Must fill all fields' do
     owner =   Owner.create(email: 'campus@campus.com.br', password: '1234567')
+    purpose = create(:purpose, name: 'Passar Ferias')
+    outher_purpose = create(:purpose, name: 'Eventos')
 
     visit root_path
     login_as(owner, :scope => :owner)
@@ -50,13 +56,12 @@ feature 'Visitor create property' do
     fill_in 'Capacidade maxima', with: 0
     fill_in 'Minimo dias de aluguel', with:0
     fill_in 'Maximo dias de aluguel', with:0
-    fill_in 'Finalidade', with: ''
     fill_in 'Localizacao', with: ''
     fill_in 'Descrição', with: ''
     fill_in 'Regras', with: ''
     fill_in 'Valor', with: 0
     fill_in 'Foto', with: ''
-    
+
 
     click_on 'Enviar'
 

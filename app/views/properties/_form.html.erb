@@ -16,8 +16,8 @@
     <%= f.text_field :maximum_rent %>
   </div>
   <div class="">
-    <%= f.label :rent_purpose, 'Finalidade' %>
-    <%= f.text_field :rent_purpose %>
+    <%= f.label :purpose_ids, 'Finalidade' %>
+    <%= f.collection_check_boxes(:purpose_ids, @purposes, :id, :name)%>
   </div>
   <div class="">
     <%= f.label :property_location, 'Localizacao' %>

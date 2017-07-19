@@ -15,7 +15,7 @@ feature 'Owner see proposals' do
    click_on 'Ver Propostas'
 
    expect(page).to have_css('h1', text: 'Minhas Propostas')
-   expect(page).to have_content('Propiedade: Casa - Festas - Sao Paulo')
+   expect(page).to have_content('Propiedade: Casa - Sao Paulo')
    expect(page).to have_content('Nome: Lucas')
    expect(page).to have_content('Data inicial: 06/08/2017')
    expect(page).to have_content('Data final: 07/08/2017')

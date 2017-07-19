@@ -1,15 +1,17 @@
 class PropertiesController < ApplicationController
-  before_action :authenticate_owner!, only:[:new]
+  before_action :authenticate_owner!, only:[:new,:edit]
   def show
     @property = Property.find(params[:id])
   end
 
   def new
     @property = Property.new
+    @purposes = Purpose.all
   end
 
   def create
     @property = Property.new(property_params)
+    @purposes = Purpose.all
     @property.owner = current_owner
     if @property.save
       redirect_to @property
@@ -21,6 +23,7 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+    @purposes = Purpose.all
   end
 
   def update
@@ -38,8 +41,8 @@ class PropertiesController < ApplicationController
 private
   def property_params
     params.require(:property).permit(:property_type, :maximum_guests,
-    :minimum_rent, :maximum_rent, :rent_purpose, :property_location,
-    :description, :rules, :daily_rate, :picture, :photo)
+    :minimum_rent, :maximum_rent, :property_location,
+    :description, :rules, :daily_rate, :picture, :photo, purpose_ids: [])
   end
 
 end

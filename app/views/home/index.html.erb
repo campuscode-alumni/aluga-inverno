@@ -14,7 +14,11 @@
           <%end%>
           <li class="list-group-item"><%= link_to property.property_type, property %></li>
           <li class="list-group-item"><%=property.property_location%></li>
-          <li class="list-group-item" ><%=property.rent_purpose%></li>
+          <li class="list-group-item" >
+            <% property.purposes.each do |purpose| %>
+              <%=purpose.name%>
+            <% end %>
+          </li>
         </ul>
 
     </div>
