@@ -1,7 +1,11 @@
 <% @proposal.errors.full_messages.each do |msg| %>
   <p><%= msg %></p>
 <% end %>
-<%= form_for [@prop, @proposal] do |f| %>
+
+
+<%= render @property %>
+
+<%= form_for [@property, @proposal] do |f| %>
 
 <div class="form-group">
   <%= f.label :start_date, 'data inicial' %>

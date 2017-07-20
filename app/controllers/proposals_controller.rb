@@ -30,7 +30,7 @@ class ProposalsController < ApplicationController
  end
 
   def new
-    @prop = Property.find(params[:property_id])
+    @property = Property.find(params[:property_id])
     @proposal = Proposal.new(property: @prop)
     @proposal.user = current_user
   end

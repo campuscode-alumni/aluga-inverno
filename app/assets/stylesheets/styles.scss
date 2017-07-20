@@ -1,5 +1,5 @@
 h1.text-center {
-    color: #337ab7;
+    color: #ffffff;
 }
 nav.navbar.navbar-default {
     background: rgba(51, 122, 183, 0.41);
@@ -7,7 +7,7 @@ nav.navbar.navbar-default {
 }
 
 .navbar-default .navbar-nav > li > a {
-    color: #fff;
+    color: #333;
 }
 a {
     text-decoration: none;
@@ -22,4 +22,14 @@ input#filter {
 .default-image{
   width: 200px;
   height: 150px;
+}
+body {
+    background-color: rgb(51, 122, 183);
+}
+.container {
+  background: #fff;
+  border-radius:10px;
+}
+nav.navbar.navbar-default {
+    background: #fff;
 }
